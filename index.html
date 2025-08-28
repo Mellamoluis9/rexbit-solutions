@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rexbit Solutions: Soluciones integrales de seguridad, conectividad y automatización para hogares, negocios y propiedades. Expertos en videovigilancia, redes, alarmas y climatización.">
+  <meta name="keywords" content="seguridad, conectividad, automatización, videovigilancia, redes, alarmas, climatización, Guatemala, Rexbit Solutions">
+  <meta name="author" content="Rexbit Solutions">
+  <meta property="og:title" content="Rexbit Solutions | Seguridad, Conectividad y Automatización">
+  <meta property="og:description" content="Soluciones integrales de tecnología para hogares, negocios y propiedades.">
+  <meta property="og:type" content="website">
+  
+  <title>Rexbit Solutions | Seguridad, Conectividad y Automatización</title>
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1573164714718-4c3b9f2456d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>">
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* Variables CSS para consistencia */
+    :root {
+      --primary-color: #0f1a2c;
+      --secondary-color: #FF6B00;
+      --accent-color: #3a86ff;
+      --light-bg: #f4f5f7;
+      --dark-text: #333;
+      --light-text: #fff;
+      --gray-text: #555;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    /* Modo oscuro */
+    [data-theme="dark"] {
+      --primary-color: #1e2a3f;
+      --light-bg: #121826;
+      --dark-text: #f0f0f0;
+      --gray-text: #ccc;
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Reset y Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+
+      line-height: 1.6;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 107, 0, 0.2);
+      border-radius: 50%;
+      border-top: 5px solid var(--secondary-color);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--secondary-color);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 99;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 99;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Header Fijo */
+    header {
+      background: var(--primary-color);
+      color: var(--light-text);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--secondary-color);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Menú móvil */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--light-text);
+      background: none;
+      border: none;
+      z-index: 101;
+      margin: 0;
+      padding: 0.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background-image: linear-gradient(rgba(15, 26, 44, 0.7), rgba(15, 26, 44, 0.7)), url('https://images.unsplash.com/photo-1573164714718-4c3b9f2456d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: var(--light-text);
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards 0.5s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      margin: 0 0.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 1rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--light-text);
+      color: var(--primary-color);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--light-text);
+      border-color: var(--light-text);
+      transform: translateY(-5px);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-color);
+      color: var(--light-text);
+    }
+
+    .btn-secondary:hover {
+      background: transparent;
+      color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-5px);
+    }
+
+    /* Secciones generales */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: var(--gray-text);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Sobre Nosotros */
+    .about {
+      background: var(--light-bg);
+      text-align: center;
+    }
+
+    .vision-mision {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+
+    .vm-box {
+      flex: 1;
+      min-width: 280px;
+      max-width: 500px;
+      padding: 2.5rem 2rem;
+      background: var(--light-text);
+      border-top: 5px solid var(--secondary-color);
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .vm-box.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .vm-box:hover {
+      transform: translateY(-10px);
+    }
+
+    .vm-box h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* Servicios */
+    .services {
+      background: var(--light-bg);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: var(--light-text);
+      padding: 2.5rem 2rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .service-card i {
+      font-size: 3.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      height: 80px;
+      width: 80px;
+      line-height: 80px;
+      background: rgba(255, 107, 0, 0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .service-card:hover i {
+      background: var(--secondary-color);
+      color: var(--light-text);
+    }
+
+    .service-card h3 {
+      color: var(--primary-color);
+      margin: 1.5rem 0 1rem;
+      font-size: 1.4rem;
+    }
+
+    .service-card p {
+      color: var(--primary-color);
+    }
+
+    /* Proyectos */
+.projects {
+    background: var(--light-text); /* fondo claro */
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    background: var(--light-text); /* fondo de la tarjeta */
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.project-content p {
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+    /* Testimonios */
+    .testimonials {
+      background: var(--ligth-color);
+      text-align: center;
+    }
+
+    .testimonials-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      max-width: 350px;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    .testimonial-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--ligth-color);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .testimonial-text::before {
+      content: "";
+      font-size: 4rem;
+      color: var(--secondary-color);
+      opacity: 0.2;
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      font-family: sans-serif;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-details h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.2rem;
+    }
+
+    .author-details p {
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+
+    /* Contacto */
+    .contact {
+      background: var(--light-bg);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      background: var(--light-text);
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .contact-form h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-form p {
+      margin-bottom: 1.5rem;
+      color: var(--gray-text);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: 'Poppins', sans-serif;
+      transition: var(--transition);
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: var(--secondary-color);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      background: var(--secondary-color);
+      color: var(--light-text);
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-form button:hover {
+      background: #e05d00;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+    }
+
+    .contact-info-card {
+      background: var(--light-text);
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .contact-info-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail i {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin-right: 1rem;
+      min-width: 24px;
+    }
+
+    .contact-detail-content h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.2rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-detail-content p {
+      color: var(--gray-text);
+    }
+
+    .map-container {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      height: 250px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Footer mejorado */
+    footer {
+      background: var(--primary-color);
+      color: #ccc;
+      padding: 4rem 2rem 2rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .footer-column p {
+      margin-bottom: 1.5rem;
+      color: #ccc;
+    }
+
+    .footer-column h3 {
+      color: var(--light-text);
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--secondary-color);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary-color);
+      transform: translateX(5px);
+    }
+
+    .social-footer {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-footer a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--light-text);
+      border-radius: 50%;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-footer a:hover {
+      background: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #2a3544;
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+
+      .menu-toggle {
+        display: block;
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: var(--primary-color);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav a {
+        padding: 0.8rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: block;
+      }
+
+      nav a:last-child {
+        border-bottom: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      section {
+        padding: 3rem 1rem;
+      }
+
+      .contact {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-form, .contact-info {
+        max-width: 100%;
+      }
+
+      .btn {
+        margin-bottom: 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+        color: #ffffff; 
+        opacity: 1;     
+        font-weight: bold;
+      }
+
+      /* Títulos según sección */
+      .testimonials .section-title h2 {
+        color: #ffffff; 
+      }
+
+      .projects .section-title h2 {
+        color: #1a1a1a; 
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+      }
+      
+      header {
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle" id="theme-toggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Rexbit Solutions</div>
+    <button class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Sobre Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <h1>Redes Confiables, Conexión Segura</h1>
+      <p>Soluciones integrales de tecnología para hogares, negocios y propiedades.</p>
+      <div class="hero-buttons">
+        <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
+        <a href="#contacto" class="btn btn-secondary">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre Nosotros -->
+  <section id="nosotros" class="about">
+    <div class="section-title">
+      <h2>Quiénes Somos</h2>
+      <p>En <strong>Rexbit Solutions</strong>, transformamos espacios con tecnología inteligente. Nos especializamos en soluciones de seguridad, conectividad y automatización para hogares, oficinas y propiedades comerciales.</p>
+    </div>
+
+    <div class="vision-mision">
+      <div class="vm-box">
+        <h3><i class="fas fa-eye"></i> Visión</h3>
+        <p>Ser líderes en soluciones integrales de seguridad, conectividad y automatización, ofreciendo tecnología de vanguardia y servicios confiables que garanticen la protección, confort y eficiencia de nuestros clientes.</p>
+      </div>
+      <div class="vm-box">
+        <h3><i class="fas fa-bullseye"></i> Misión</h3>
+        <p>Brindar soluciones tecnológicas avanzadas que permitan a hogares, negocios y propiedades proteger sus activos, optimizar sus procesos y disfrutar de control total mediante sistemas de videovigilancia, redes, alarmas, automatización y climatización.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="services">
+    <div class="section-title">
+      <h2>Nuestros Servicios</h2>
+      <p>Ofrecemos soluciones completas y personalizadas para proteger, conectar y automatizar tus espacios.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-video"></i>
+        <h3>Videovigilancia & Seguridad</h3>
+        <p>Instalación y mantenimiento de cámaras IP con visión nocturna, audio integrado y monitoreo remoto en Full HD y 4K.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-network-wired"></i>
+        <h3>Redes & Conectividad</h3>
+        <p>Diseño e implementación de redes LAN y Wi-Fi seguras, rápidas y estables para hogares y empresas.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-bell"></i>
+        <h3>Alarmas & Monitoreo 24/7</h3>
+        <p>Sistemas de alarma contra robo e intrusión con alertas móviles y control remoto desde tu smartphone.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-robot"></i>
+        <h3>Automatización Inteligente</h3>
+        <p>Control de luces, puertas, cámaras y alarmas mediante dispositivos móviles o comandos de voz (Alexa, Google Assistant).</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-thermometer-half"></i>
+        <h3>Climatización</h3>
+        <p>Instalación y mantenimiento de sistemas de aire acondicionado para confort integral en cualquier espacio.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-cogs"></i>
+        <h3>Soporte Técnico</h3>
+        <p>Diagnóstico y solución rápida de fallas, mantenimiento preventivo y soporte continuo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section id="proyectos" class="projects">
+    <div class="section-title">
+      <h2>Proyectos Recientes</h2>
+      <p>Conoce algunos de los trabajos que hemos realizado con éxito.</p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Proyecto 1 -->
+      <div class="project-card">
+        <img src="https://reyma-mobiliario.com/wp-content/uploads/2021/07/instalacion-comerdor-sillones-paris.jpg" alt="Instalación de cámaras de seguridad en residencia" class="project-img" />
+        <div class="project-content">
+          <h3>Residencia "Cielo Azul"</h3>
+          <p><strong>Cliente:</strong> Familia en zona residencial</p>
+          <p><strong>Solución:</strong> 6 cámaras IP 4K, red Wi-Fi, alarma y automatización de luces.</p>
+        </div>
+      </div>
+
+      <!-- Proyecto 2 -->
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa" alt="Sistema de seguridad para oficinas" class="project-img" />
+        <div class="project-content">
+          <h3>Oficina "InnovaLab"</h3>
+          <p><strong>Cliente:</strong> Empresa tecnológica</p>
+          <p><strong>Solución:</strong> Red segura, CCTV, acceso biométrico y climatización.</p>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 -->
+      <div class="project-card">
+        <img src="https://img.interempresas.net/fotos/3289678.jpeg" alt="Sistema de vigilancia para centro comercial" class="project-img" />
+        <div class="project-content">
+          <h3>Centro Comercial "Plaza Norte"</h3>
+          <p><strong>Cliente:</strong> Administración comercial</p>
+          <p><strong>Solución:</strong> 15 cámaras Full HD, monitoreo 24/7 y alarmas por zonas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios" class="testimonials">
+    <div class="section-title">
+      <h2>Testimonios</h2>
+      <p>Lo que nuestros clientes dicen sobre nuestros servicios.</p>
+    </div>
+
+    <div class="testimonials-container">
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          <p>Excelente servicio de instalación de cámaras en mi negocio. Muy profesionales y el sistema funciona perfectamente. Lo recomiendo 100%.</p>
+        </div>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Morales" class="author-avatar" />
+          <div class="author-details">
+            <h4>Carlos Morales</h4>
+            <p>Dueño de Negocio</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          <p>Contraté a Rexbit para la automatización de mi casa y quedé impresionado con los resultados. Ahora controlo todo desde mi teléfono.</p>
+        </div>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="María González" class="author-avatar" />
+          <div class="author-details">
+            <h4>María González</h4>
+            <p>Cliente Residencial</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-text">
+          <p>La mejor inversión en seguridad para nuestra empresa. El sistema de alarmas y monitoreo es excelente y el soporte técnico siempre está disponible.</p>
+        </div>
+        <div class="testimonial-author">
+          <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Roberto Sánchez" class="author-avatar" />
+          <div class="author-details">
+            <h4>Roberto Sánchez</h4>
+            <p>Gerente de Empresa</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="contact">
+    <div class="contact-form">
+      <h2><i class="fas fa-envelope"></i> Escríbenos</h2>
+      <p>¿Tienes un proyecto o necesitas soporte? Déjanos tus datos y te contactaremos por WhatsApp.</p>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name">Nombre completo</label>
+          <input type="text" id="name" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Teléfono</label>
+          <input type="tel" id="phone" placeholder="Tu número de contacto" required />
+        </div>
+        <div class="form-group">
+          <label for="service">Servicio de interés</label>
+          <select id="service" required>
+            <option value="" disabled selected>Selecciona un servicio</option>
+            <option value="Videovigilancia">Videovigilancia & Seguridad</option>
+            <option value="Redes">Redes & Conectividad</option>
+            <option value="Alarmas">Alarmas & Monitoreo 24/7</option>
+            <option value="Automatización">Automatización Inteligente</option>
+            <option value="Climatización">Climatización</option>
+            <option value="Soporte">Soporte Técnico</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="department">Departamento</label>
+          <select id="department" required>
+            <option value="" disabled selected>Selecciona tu departamento</option>
+            <option value="Izabal">Izabal</option>
+            <option value="Petén">Petén</option>
+            <option value="Alta Verapaz">Alta Verapaz</option>
+            <option value="Zacapa">Zacapa</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Mensaje personalizado (opcional)</label>
+          <textarea id="message" placeholder="Tu mensaje..."></textarea>
+        </div>
+        <button type="submit"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <div class="contact-info-card">
+        <h3><i class="fas fa-info-circle"></i> Información de Contacto</h3>
+        
+        <div class="contact-detail">
+          <i class="fas fa-phone-alt"></i>
+          <div class="contact-detail-content">
+            <h4>Teléfono</h4>
+            <p>+502 4686 6474</p>
+          </div>
+        </div>
+        
+        <div class="contact-detail">
+          <i class="fab fa-whatsapp"></i>
+          <div class="contact-detail-content">
+            <h4>WhatsApp</h4>
+            <p>Disponible 24/7</p>
+          </div>
+        </div>
+        
+        <div class="contact-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="contact-detail-content">
+            <h4>Ubicación</h4>
+            <p>Atendemos en: Izabal, Petén, Alta Verapaz, Zacapa</p>
+          </div>
+        </div>
+        
+        <div class="contact-detail">
+          <i class="fas fa-clock"></i>
+          <div class="contact-detail-content">
+            <h4>Horario</h4>
+            <p>Lunes a Sábado: 8:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+        
+      <a href="https://wa.me/50246866474" target="_blank" class="btn btn-secondary" style="margin-top: 1.5rem; display: inline-flex; align-items: center;">
+      <i class="fab fa-whatsapp" style="margin-right: 0.5rem;"></i> Chatea directamente
+</a>
+
+      
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3746.6258624815937!2d-89.01064241973863!3d15.664377315117449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sgt!4v1756340442909!5m2!1ses!2sgt" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer mejorado -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <div class="footer-logo">Rexbit Solutions</div>
+        <p>Tecnología inteligente para tu seguridad, conectividad y confort.</p>
+        <div class="social-footer">
+          <a href="https://www.facebook.com/Rexbitgt" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.tiktok.com/@rexbitgt" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/rexbitgt/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/Rexbitgt" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+          <li><a href="#nosotros"><i class="fas fa-chevron-right"></i> Sobre Nosotros</a></li>
+          <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Servicios</a></li>
+          <li><a href="#proyectos"><i class="fas fa-chevron-right"></i> Proyectos</a></li>
+          <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Servicios</h3>
+        <ul>
+          <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Videovigilancia</a></li>
+          <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Redes y Wi-Fi</a></li>
+          <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Alarmas 24/7</a></li>
+          <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Automatización</a></li>
+          <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Climatización</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contacto</h3>
+        <p><i class="fas fa-phone-alt"></i> +502 4686 6474</p>
+        <p><i class="fas fa-map-marker-alt"></i> Izabal, Petén, Alta Verapaz, Zacapa</p>
+        <p><i class="fas fa-clock"></i> Lunes a Sábado: 8:00 AM - 6:00 PM</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Rexbit Solutions. Todos los derechos reservados.</p>
+      <p>Desarrollado con tecnología de vanguardia.</p>
+    </div>
+  </footer>
+
+  <!-- Script para funcionalidades mejoradas -->
+  <script>
+    // Preloader
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(function() {
+        preloader.style.opacity = '0';
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 1000);
+    });
+
+    // Menú móvil
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      document.getElementById('nav-menu').classList.toggle('show');
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.getElementById('nav-menu').classList.remove('show');
+      });
+    });
+
+    // Enviar formulario a WhatsApp con el formato solicitado
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('service').value;
+      const department = document.getElementById('department').value;
+      const message = document.getElementById('message').value;
+
+      const texto = `Hola, mi nombre es ${name}.\nEstoy interesado en recibir información sobre el servicio de ${service}.\nMe comunico desde el departamento de ${department}.${message ? '\n\nMensaje personalizado:\n' + message : ''}`;
+      const url = `https://wa.me/50246866474?text=${encodeURIComponent(texto)}`;
+      
+      window.open(url, '_blank');
+    });
+
+    // Animación de elementos al hacer scroll
+    function checkScroll() {
+      const elements = document.querySelectorAll('.vm-box, .service-card, .project-card, .testimonial-card');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (elementPosition < screenPosition) {
+          element.classList.add('visible');
+        }
+      });
+
+      // Back to top button
+      const backToTop = document.getElementById('back-to-top');
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', checkScroll);
+    // Ejecutar una vez al cargar para elementos ya visibles
+    window.addEventListener('load', checkScroll);
+
+    // Back to top functionality
+    document.getElementById('back-to-top').addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or respect OS preference
+    if (localStorage.getItem('theme') === 'dark' || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'))) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+    
+    themeToggle.addEventListener('click', function() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+    });
+
+    // Form validation
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9+]/g, '');
+    });
+  </script>
+
+</body>
+</html>
